@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- this id is cordova_plugins.js's id -->
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="cordova-plugin-dialog" version="0.0.1">
+    <name>ToastPlugin</name>
+    <description>show toast and dialog</description>
+    
+    
+    <!-- installed path : plugins/cordova-plugin-dialog/src -->
+    <js-module name="ToastPlugin" src="www/ToastPlugin.js">
+    <!-- assets/cordova_plugins.js's clobbers -->
+        <clobbers target="dialog"/>
+    </js-module>
+    
+
+    <!-- add platform -->
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+        <!-- the feature will be copied to the config.xml-->
+        <feature name="MyToast">
+            <param name="android-package" value="com.jty.app.plugin.ToastPlugin"/>
+        </feature>
+        </config-file>
+        <!-- src for the local file，target for the installed path -->
+        <source-file src="src/android/ToastPlugin.java" target-dir="src/org/apache/cordova/toast"/>
+    </platform>
+<!--     <platform name="ios">
+        this is ios platforms,if you need other platforms,refer to this format please!
+    </platform> -->
+</plugin>
